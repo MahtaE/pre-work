@@ -1,21 +1,24 @@
 package com.example.pre_work;
 
-import android.os.FileUtils;
+//import android.os.FileUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
+//import org.apache.commons.io.FileUtils;
 public class MainActivity extends AppCompatActivity {
 
     List<String> items;
@@ -69,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
     private File getDataFile() {
         return new File(getFilesDir(), "data.txt");
@@ -77,17 +79,26 @@ public class MainActivity extends AppCompatActivity {
     // This function will load items by reading every line of the file.
     private void loadItems() {
 
-            items = new ArrayList<>(FileUtils.readlines(getDataFile(), Charset.defaultCharset()));
-
+        try {
+            items = new ArrayList<>(FileUtils.readLines(getDataFile(), Charset.defaultCharset()));
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("MAinActivity", "Error reading item", e);
+            items = new ArrayList<>();
         }
+
+    }
 
     // This function save items by writing them into data file
     private void saveItems() {
-        FileUtils.writeLines(getDataFile(), items);
+        try {
+            FileUtils.writeLines(getDataFile(), items);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("MAinActivity", "Error reading item", e);
+        }
     }
-
-
-
+    
 
     }
 
