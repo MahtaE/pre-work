@@ -1,11 +1,11 @@
 # pre-work
-# Project 1 - *Name of App Here*
+# Project 1 - *To do App*
 
 **Name of your app** is an android app that allows building a todo list and basic todo items management functionality including adding new items, editing and deleting an existing item.
 
-Submitted by: **Your Name Here**
+Submitted by: **Mahta Ellis**
 
-Time spent: **X** hours spent in total
+Time spent: **3** hours spent in total
 
 ## User Stories
 
